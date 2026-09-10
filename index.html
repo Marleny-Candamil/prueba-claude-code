@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contador de clics</title>
+<style>
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f0f0f0;
+    transition: background-color 0.4s ease;
+  }
+
+  h1 {
+    color: #222;
+    margin-bottom: 2rem;
+  }
+
+  #boton {
+    font-size: 1.5rem;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 12px;
+    background-color: #4a90e2;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  #boton:active {
+    transform: scale(0.9);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+  }
+
+  #contador {
+    margin-top: 2rem;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #222;
+  }
+</style>
+</head>
+<body>
+  <h1>Contador de clics</h1>
+  <button id="boton">Haz clic</button>
+  <div id="contador">0</div>
+
+  <script>
+    let contador = 0;
+    const boton = document.getElementById('boton');
+    const contadorEl = document.getElementById('contador');
+
+    function colorAleatorio() {
+      const letras = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+        color += letras[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+
+    boton.addEventListener('click', () => {
+      contador++;
+      contadorEl.textContent = contador;
+      document.body.style.backgroundColor = colorAleatorio();
+    });
+  </script>
+</body>
+</html>
